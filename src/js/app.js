@@ -41,10 +41,8 @@ window.addEventListener('load',async ()=>{
             console.log('Service Worker registrado');
         }
     }
-});
 
-
-const bannerInstall = document.querySelector('#banner-install');
+    const bannerInstall = document.querySelector('#banner-install');
 bannerInstall.addEventListener('click', async ()=>{
     if(deferredPrompt){
         deferredPrompt.prompt();
@@ -53,4 +51,9 @@ bannerInstall.addEventListener('click', async ()=>{
             console.log('El usuario canceló la instalación');
         }
     }
-})
+});
+
+});
+
+
+
