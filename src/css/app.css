@@ -17,7 +17,9 @@
         --width: 100%;
         --fontFamily: "Roboto";
     }
-
+*{
+    user-select: none;
+}
 .floating-button{
     z-index: 1000;
     position: fixed;
@@ -122,6 +124,98 @@
     padding: 5px 8px;
 }
 
+/* Notificaciones */
+
+.notifications--install{
+    background: #bbb;
+    color: var(--white) !important;
+    display: flex;
+    flex-direction: row;
+}
+
+.notifications--install div:first-child{
+    text-align: left;
+    font-size: 12px;
+    padding: 5px 0 8px 5px;
+}
+
+.notifications--install div:last-child{
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 4px;
+    float: right;
+    padding: 5px 8px;
+}
+
 .select-one{
     user-select: none;
 }
+
+#toast-container{
+    z-index: 99999 !important;
+}
+
+.pa-0{
+    padding: 0;
+}
+.ma-0{
+    margin: 0;
+}
+.fs8{
+    font-size: 18px !important;
+}
+
+.error{
+    background: var(--error);
+}
+.success{
+    background: var(--success);
+}
+
+#loading{
+    display: none;
+}
+
+.loading{
+    position: fixed;
+    z-index: 1010;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255, 255, 255, .8);
+}
+
+
+/* Para los posts */
+
+.card-posts {
+    width: var(--width) !important;
+}
+
+.card-posts .mdl-card {
+    width: var(--width) !important;
+}
+
+.card-posts > .mdl-card__title {
+    color: var(--white);
+    height: 176px;
+    background: url(../images/computer.jpg) center/cover;
+}
+
+.card-posts > .mdl-card__menu {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
