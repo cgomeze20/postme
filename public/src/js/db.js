@@ -67,7 +67,7 @@ const createPosts = ({description,title,image,timestamp})=>{
 
 
 if(window.location.href.includes('post.html')){
-    db.collection('posts').onSnapshot((snapshot) => {
+    db.collection('posts').orderBy('timestamp',"desc").onSnapshot((snapshot) => {
         snapshot.docChanges().forEach(change => {
             if(change.type === 'added'){
                 const data =change.doc.data();
