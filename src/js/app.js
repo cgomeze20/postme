@@ -107,7 +107,7 @@ window.addEventListener('load',async ()=>{
                 dir: 'ltr',
                 tag: 'notificacion-postme',
                 requireInteraction: 'true',
-                vibrate: [100,50,200,50,100,200,100,50,100,200,100,50,200,100,200,50,200,50,100],
+                vibrate: [1000,50,2000,50,1000,200,1000,50,2000,50,1000],
                 actions: [
                     {action: 'confirm', title: 'Aceptar', icon: 'src/images/icons/icon-144x144.png'},
                     {action: 'cancel', title: 'Cancelar', icon: 'src/images/icons/icon-144x144.png'}
