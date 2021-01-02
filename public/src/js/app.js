@@ -166,6 +166,51 @@ window.addEventListener('load',async ()=>{
         }
       }
 
+    //   --------------------------------------Mensaje-----------------------------------------------------------------------
+
+    // const configuracionSubscripcionn = () => {
+
+        const form = document.querySelector('#myform');
+        const message = document.querySelector('#mensaje');
+        
+        
+        form.addEventListener('submit', e => {
+            if (navigator.serviceWorker) {
+                let reg;
+                navigator.serviceWorker.ready
+                 .then(sw => {
+                   reg = sw;
+                   return sw.pushManager.getSubscription()
+                 })
+                 .then(sub => {
+                   // hemos ejecutado web-push generate-vapid-keys
+                   var vapidPublicKey = 'BA74k-MUv44qCQ-0RVLwdXQrk-1tsHaPEn_hXwgJ3S7ij1SVQi1xP0a7FysQiDv1pk1TFWvglGcAKkRNwKX8kI0';
+                   var convertedublicKeyToVapid = urlBase64ToUint8Array(vapidPublicKey);
+                   return reg.pushManager.subscribe({
+                     userVisibleOnly: true,  // Que la notificacion entrante sea visible
+                     applicationServerKey: convertedublicKeyToVapid
+                   })
+                 })
+                 .then(res => {
+                   const urlR = '/message';
+                   return fetch(urlR, {
+                     method: 'POST',
+                     cors: 'no-cors',
+                     headers: {
+                       'Content-Type': 'application/json',
+                       'Accept': 'application/json'
+                     },
+                     body: JSON.stringify(res)
+                   })
+                 })
+                 .then(() => {})// showNotification())
+                 .catch(err => console.error(err.message))
+              }
+        })
+        
+
+    // ---------------------------------------Fin Mensaje--------------------------------------------------------------------
+
     const requestPermission = async () =>{
 
         const result = await Notification.requestPermission();
@@ -183,7 +228,10 @@ window.addEventListener('load',async ()=>{
 
     //Seccion Notificaciones
     const BTN_NOTIFICATIONS = document.querySelector('#notificactions-install');
-          BTN_NOTIFICATIONS.addEventListener('click',requestPermission,false)
+          BTN_NOTIFICATIONS.addEventListener('click',requestPermission,false);
+
+
+         
   
 
 

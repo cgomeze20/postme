@@ -37,6 +37,27 @@ app.post('/subscribe',(req,res)=>{
     .catch(error => console.log(error));
 });
 
+app.post('/message',async (req,res) => {
+
+    const mensaje = req.body;
+
+    const payload = JSON.stringify({
+        title: 'CG Notification',
+        body: 'Tienes una nueva Notificación'
+    })
+
+    try {
+        await webPush.sendNotification(mensaje,payload);
+        // console.log(req.body);
+        
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
+
+
 
 app.set('port', process.env.PORT || 5000);
 const server = app.listen(app.get('port'), () => {
